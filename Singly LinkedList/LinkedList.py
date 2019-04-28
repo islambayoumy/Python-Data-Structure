@@ -21,9 +21,11 @@ class LinkedList:
         self.head = None
         self.count = 0
 
-    def list_count(self):
+    def list_count(self, node):
         """Return number of Nodes in the LinkedList"""
-        return self.count
+        if not node:
+            return 0
+        return 1 + self.list_count(node.next) 
 
     def add_head(self, data):
         """Insert new Node at the beginning of the LinkedList"""
@@ -74,7 +76,7 @@ class LinkedList:
         """Search a node by position"""
         if position <= 1:
             return self.get_head()
-        elif 1 < position <= self.list_count():
+        elif 1 < position <= self.list_count(self.head):
             node = self.head
             for _ in range(0, position-1):
                 node = node.next
@@ -172,7 +174,37 @@ class LinkedList:
             print(current.data)
             current = current.next
 
+    def swap_nodes(self, node_data1, node_data2):
+        """Swap two adjacent nodes"""
+        if node_data1 == node_data2:
+            return
+        
+        pre_node1 = None
+        curr_node1 = self.head
+        while curr_node1 and curr_node1.data != node_data1:
+            pre_node1 = curr_node1
+            curr_node1 = curr_node1.next
 
+        pre_node2 = None
+        curr_node2 = self.head
+        while curr_node2 and curr_node2.data != node_data2:
+            pre_node2 = curr_node2
+            curr_node2 = curr_node2.next
+
+        if not curr_node1 or not curr_node2:
+            return
+
+        if pre_node1:
+            pre_node1.next = curr_node2
+        else:
+            self.head = curr_node2
+
+        if pre_node2:
+            pre_node2.next = curr_node1
+        else:
+            self.head = curr_node1
+
+        curr_node1.next, curr_node2.next = curr_node2.next, curr_node1.next
 
 
 def test_func():
@@ -186,12 +218,12 @@ def test_func():
     llist.add_tail(7)
 
 
-    print("Number of Nodes: {}".format(llist.list_count()))
+    print("Number of Nodes: {}".format(llist.list_count(llist.head)))
     llist.print_list()
     
-    llist.reverse_list_recursive()
+    llist.swap_nodes(3,6)
 
-    print("Number of Nodes: {}".format(llist.list_count()))
+    print("Number of Nodes: {}".format(llist.list_count(llist.head)))
     llist.print_list()
 
 test_func()

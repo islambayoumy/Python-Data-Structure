@@ -4,7 +4,7 @@ from LinkedList import LinkedListNode
 
 @pytest.fixture
 def llistnode(request):
-    "Creating a LinkedListNode object"
+    """Creating a LinkedListNode object"""
     llistnode = LinkedListNode("Test")
     return llistnode
 
