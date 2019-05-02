@@ -11,6 +11,26 @@ def llist(request):
     llist.add_head("O")
     return llist
 
+@pytest.fixture
+def sorted_llist1(request):
+    """Creating a sorted LinkedList object"""
+    sorted_llist1 = LinkedList()
+    sorted_llist1.add_tail(3)
+    sorted_llist1.add_tail(5)
+    sorted_llist1.add_tail(7)
+    sorted_llist1.add_tail(8)
+    return sorted_llist1
+
+@pytest.fixture
+def sorted_llist2(request):
+    """Creating a sorted LinkedList object"""
+    sorted_llist2 = LinkedList()
+    sorted_llist2.add_tail(1)
+    sorted_llist2.add_tail(2)
+    sorted_llist2.add_tail(6)
+    sorted_llist2.add_tail(10)
+    return sorted_llist2
+
 def test_is_linkedlist_empty(llist):
     assert llist.head, "list is empty"
 
@@ -103,3 +123,21 @@ def test_swap_nodes(llist):
 
 def test_swap_nodes_not_exist(llist):
     assert not llist.swap_nodes("A", "M")
+
+def test_merge_two_sorted_lists(sorted_llist1, sorted_llist2):
+    new_merged_list = sorted_llist1.merge_two_sorted_lists(sorted_llist2)
+    assert new_merged_list.data == 1
+
+def test_merge_two_sorted_lists_reverse(sorted_llist1, sorted_llist2):
+    new_merged_list = sorted_llist2.merge_two_sorted_lists(sorted_llist1)
+    assert new_merged_list.data == 1
+
+def test_merge_two_sorted_lists_left_empty(sorted_llist1):
+    list2 = LinkedList()
+    new_merged_list = sorted_llist1.merge_two_sorted_lists(list2)
+    assert new_merged_list.data == sorted_llist1.get_head().data
+
+def test_merge_two_sorted_lists_right_empty(sorted_llist2):
+    list1 = LinkedList()
+    new_merged_list = list1.merge_two_sorted_lists(sorted_llist2)
+    assert new_merged_list.data == sorted_llist2.get_head().data

@@ -7,11 +7,15 @@ class LinkedListNode:
         self.next = None
 
     def get_data(self):
-        """Return data/value inside Node"""
+        """
+        Return data/value inside Node
+        """
         return self.data
 
     def get_next(self):
-        """Return the pointer to the Next Node"""
+        """
+        Return the pointer to the Next Node
+        """
         return self.next
 
 
@@ -22,13 +26,17 @@ class LinkedList:
         self.count = 0
 
     def list_count(self, node):
-        """Return number of Nodes in the LinkedList"""
+        """
+        Return number of Nodes in the LinkedList
+        """
         if not node:
             return 0
         return 1 + self.list_count(node.next) 
 
     def add_head(self, data):
-        """Insert new Node at the beginning of the LinkedList"""
+        """
+        Insert new Node at the beginning of the LinkedList
+        """
         node = LinkedListNode(data)
         
         node.next = self.head
@@ -38,7 +46,9 @@ class LinkedList:
         return
         
     def add_node(self, data, position):
-        """Insert new Node at a specific position of the LinkedList"""        
+        """
+        Insert new Node at a specific position of the LinkedList
+        """        
         pre_node = self.get_node_by_position(position-1)            
         node = LinkedListNode(data)
         node.next = pre_node.next
@@ -47,7 +57,9 @@ class LinkedList:
         return
         
     def add_tail(self, data):
-        """Insert new Node at the ending of the LinkedList"""    
+        """
+        Insert new Node at the ending of the LinkedList
+        """    
         node = LinkedListNode(data)
         self.count+=1
 
@@ -62,18 +74,24 @@ class LinkedList:
             return
 
     def get_head(self):
-        """Return head of LinkedList"""
+        """
+        Return head of LinkedList
+        """
         return self.head
     
     def get_tail(self):
-        """Return tail of LinkedList"""
+        """
+        Return tail of LinkedList
+        """
         current = self.head
         while current.next:
             current = current.next
         return current
 
     def get_node_by_position(self, position):
-        """Search a node by position"""
+        """
+        Search a node by position
+        """
         if position <= 1:
             return self.get_head()
         elif 1 < position <= self.list_count(self.head):
@@ -85,7 +103,9 @@ class LinkedList:
             return self.get_tail()
 
     def get_node_by_data(self, data):
-        """Search a node by data"""
+        """
+        Search a node by data
+        """
         current = self.head
         while current:
             if current.data == data:
@@ -94,7 +114,9 @@ class LinkedList:
         return
 
     def get_position_of_node_by_data(self, data):
-        """Return position of first occurence of a data"""
+        """
+        Return position of first occurence of a data
+        """
         current = self.head
         position = 0
         while current:
@@ -105,7 +127,9 @@ class LinkedList:
         return
     
     def delete_head(self):
-        """Delete the head of the LinkedList and return the new head"""
+        """
+        Delete the head of the LinkedList and return the new head
+        """
         node = self.head
         if node:
             self.head = node.next
@@ -114,7 +138,9 @@ class LinkedList:
         return self.head
 
     def delete_by_position(self, position):
-        """Delete a node of the LinkedList at certain position"""
+        """
+        Delete a node of the LinkedList at certain position
+        """
         pre_node = self.get_node_by_position(position-1)
         node = pre_node.next
         
@@ -127,7 +153,9 @@ class LinkedList:
         return
     
     def delete_by_data(self, data):
-        """Delete a node of the LinkedList by data"""
+        """
+        Delete a node of the LinkedList by data
+        """
         node = self.get_node_by_data(data)
         node_position = self.get_position_of_node_by_data(data)
         pre_node = self.get_node_by_position(node_position-1)
@@ -141,7 +169,9 @@ class LinkedList:
         return
 
     def reverse_list_iterative(self):
-        """Reverse the LinkedList iteratively"""
+        """
+        Reverse the LinkedList iteratively
+        """
         pre_node = None
         curr_node = self.head
         while curr_node:
@@ -153,7 +183,9 @@ class LinkedList:
         return
 
     def reverse_list_recursive(self):
-        """Reverse the LinkedList recursively"""
+        """
+        Reverse the LinkedList recursively
+        """
         def reverse_recursive(pre_node, curr_node):
             if not curr_node:
                 return pre_node
@@ -168,14 +200,18 @@ class LinkedList:
         return
 
     def print_list(self):
-        """Print the whole LinkedList"""
+        """
+        Print the whole LinkedList
+        """
         current = self.head
         while current:
             print(current.data)
             current = current.next
 
     def swap_nodes(self, node_data1, node_data2):
-        """Swap two adjacent nodes"""
+        """
+        Swap two adjacent nodes
+        """
         if node_data1 == node_data2:
             return
         
@@ -207,23 +243,65 @@ class LinkedList:
         curr_node1.next, curr_node2.next = curr_node2.next, curr_node1.next
 
 
+    def merge_two_sorted_lists(self, mlist):
+        head_list1 = self.head
+        head_list2 = mlist.head
+        newlist = None
+
+        if not head_list1:
+            return head_list2
+        if not head_list2:
+            return head_list1
+        
+        if head_list1 and head_list2:
+            if head_list1.data <= head_list2.data:
+                newlist = head_list1
+                head_list1 = newlist.next
+            else:
+                newlist = head_list2
+                head_list2 = head_list2.next
+            newhead = newlist
+
+        while head_list1 and head_list2:
+            if head_list1.data <= head_list2.data:
+                newlist.next = head_list1
+                newlist = head_list1
+                head_list1 = newlist.next
+            else:
+                newlist.next = head_list2
+                newlist = head_list2
+                head_list2 = newlist.next
+
+        if not head_list1:
+            newlist.next = head_list2
+        if not head_list2:
+            newlist.next = head_list1
+        
+        return newhead
+
+"""
+Method just for testing
+"""
 def test_func():
-    llist = LinkedList()
-    llist.add_tail(1)
-    llist.add_tail(2)
-    llist.add_head(3)
-    llist.add_node(4, 0)
-    llist.add_node(1, -2)
-    llist.add_node(6, 2)
-    llist.add_tail(7)
-
-
-    print("Number of Nodes: {}".format(llist.list_count(llist.head)))
-    llist.print_list()
+    sorted_llist1 = LinkedList()
+    sorted_llist2 = LinkedList()
     
-    llist.swap_nodes(3,6)
+    sorted_llist1.add_tail(3)
+    sorted_llist1.add_tail(5)
+    sorted_llist1.add_tail(7)
+    sorted_llist1.add_tail(8)
 
-    print("Number of Nodes: {}".format(llist.list_count(llist.head)))
-    llist.print_list()
+    sorted_llist2.add_tail(1)
+    sorted_llist2.add_tail(2)
+    sorted_llist2.add_tail(6)
+    sorted_llist2.add_tail(10)
+
+    sorted_llist1.print_list()
+    print("\n")
+    sorted_llist2.print_list()
+    print("\n")
+
+    new_merged_list = sorted_llist1.merge_two_sorted_lists(sorted_llist2)
+    print(new_merged_list.data)
 
 test_func()
