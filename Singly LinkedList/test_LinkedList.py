@@ -29,6 +29,7 @@ def sorted_llist2(request):
     sorted_llist2.add_tail(2)
     sorted_llist2.add_tail(6)
     sorted_llist2.add_tail(10)
+    sorted_llist2.add_tail(12)
     return sorted_llist2
 
 def test_is_linkedlist_empty(llist):
@@ -147,3 +148,25 @@ def test_remove_duplicates(llist):
     count = llist.list_count(llist.head)
     llist.remove_duplicates()
     assert llist.list_count(llist.head) == count - 1
+
+def test_compare_two_lists_is_equal_empty():
+    llist1 = LinkedList()
+    llist2 = LinkedList()
+    result = llist1.compare_two_lists_is_equal(llist2.head)
+    assert result == 1
+
+def test_compare_two_lists_is_equal_not_same_len(sorted_llist1, sorted_llist2):
+    result = sorted_llist1.compare_two_lists_is_equal(sorted_llist2.head)
+    assert result == 0
+
+def test_compare_two_lists_is_equal_true(llist):
+    result = llist.compare_two_lists_is_equal(llist.head)
+    assert result == 1
+
+def test_compare_two_lists_is_equal_false(llist):
+    llist1 = LinkedList()
+    llist1.add_head("M")
+    llist1.add_head("C")
+    llist1.add_head("O")
+    result = llist.compare_two_lists_is_equal(llist1.head)
+    assert result == 0

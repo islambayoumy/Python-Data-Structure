@@ -295,23 +295,49 @@ class LinkedList:
                 previous = current
             current = previous.next
 
+    def compare_two_lists_is_equal(self, head2):
+        """
+        Check if two linkedlists are identically equals
+        """
+        current1 = self.head
+        current2 = head2
+        
+        if not current1 and not current2:
+            return 1
+
+        count1 = self.list_count(current1)
+        count2 = self.list_count(current2)
+
+        if count1 != count2:
+            return 0
+        
+        while current1 and current2:
+            if current1.data != current2.data:
+                return 0
+            current1 = current1.next
+            current2 = current2.next
+        return 1
+
 """
 Method just for testing
 """
 def test_func():
-    llist = LinkedList()
+    llist1 = LinkedList()
+    llist2 = LinkedList()
+
     
-    llist.add_tail(3)
-    llist.add_tail(5)
-    llist.add_tail(2)
-    llist.add_tail(5)
-    llist.add_tail(7)
-    llist.add_tail(8)
+    llist1.add_tail(3)
+    llist1.add_tail(5)
+    llist1.add_tail(2)
 
-    llist.print_list()
-    print("\n")
+    llist2.add_tail(1)
+    llist2.add_tail(5)
+    llist2.add_tail(2)
 
-    llist.remove_duplicates()
-    llist.print_list()
+    if llist1.compare_two_lists_is_equal(llist2.head):
+        print("equal")
+    else:
+        print("not equal")
+
 
 test_func()
