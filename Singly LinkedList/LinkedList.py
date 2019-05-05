@@ -242,7 +242,6 @@ class LinkedList:
 
         curr_node1.next, curr_node2.next = curr_node2.next, curr_node1.next
 
-
     def merge_two_sorted_lists(self, mlist):
         head_list1 = self.head
         head_list2 = mlist.head
@@ -279,29 +278,40 @@ class LinkedList:
         
         return newhead
 
+    def remove_duplicates(self):
+        """
+        Removing duplicate data
+        """
+        current = self.head
+        previous= None
+        dupl_values = list()
+
+        while current:
+            if current.data in dupl_values:
+                previous.next = current.next
+                current = None
+            else:
+                dupl_values.append(current.data)
+                previous = current
+            current = previous.next
+
 """
 Method just for testing
 """
 def test_func():
-    sorted_llist1 = LinkedList()
-    sorted_llist2 = LinkedList()
+    llist = LinkedList()
     
-    sorted_llist1.add_tail(3)
-    sorted_llist1.add_tail(5)
-    sorted_llist1.add_tail(7)
-    sorted_llist1.add_tail(8)
+    llist.add_tail(3)
+    llist.add_tail(5)
+    llist.add_tail(2)
+    llist.add_tail(5)
+    llist.add_tail(7)
+    llist.add_tail(8)
 
-    sorted_llist2.add_tail(1)
-    sorted_llist2.add_tail(2)
-    sorted_llist2.add_tail(6)
-    sorted_llist2.add_tail(10)
-
-    sorted_llist1.print_list()
-    print("\n")
-    sorted_llist2.print_list()
+    llist.print_list()
     print("\n")
 
-    new_merged_list = sorted_llist1.merge_two_sorted_lists(sorted_llist2)
-    print(new_merged_list.data)
+    llist.remove_duplicates()
+    llist.print_list()
 
 test_func()

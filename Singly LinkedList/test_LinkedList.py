@@ -141,3 +141,9 @@ def test_merge_two_sorted_lists_right_empty(sorted_llist2):
     list1 = LinkedList()
     new_merged_list = list1.merge_two_sorted_lists(sorted_llist2)
     assert new_merged_list.data == sorted_llist2.get_head().data
+
+def test_remove_duplicates(llist):
+    llist.add_tail("O")
+    count = llist.list_count(llist.head)
+    llist.remove_duplicates()
+    assert llist.list_count(llist.head) == count - 1
