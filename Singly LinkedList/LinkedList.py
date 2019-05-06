@@ -371,6 +371,22 @@ class LinkedList:
         
         return s == s[::-1]
 
+    def move_tail_to_head(self):
+        """
+        Move tail of the list to head
+        """
+        current = self.head
+        pre_tail = None
+
+        while current.next:
+            pre_tail = current
+            current = current.next
+            
+        current.next = self.head
+        self.head = current
+        pre_tail.next = None
+        return
+
 """
 Method just for testing
 """
@@ -380,9 +396,10 @@ def test_func():
     llist.add_tail("A")
     llist.add_tail("B")
     llist.add_tail("C")
-    llist.add_tail("B")
-    llist.add_tail("A")
+    llist.add_tail("D")
 
-    print(llist.is_palindrome())
+    llist.move_tail_to_head()
+
+    llist.print_list()
 
 test_func()
