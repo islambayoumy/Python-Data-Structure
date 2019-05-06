@@ -330,12 +330,38 @@ class LinkedList:
             current = current.next
         return count
 
+    def rotate_list(self, k):
+        """
+        Rotating the list to kth
+        """
+        p = self.head
+        q = self.head
+
+        previous = None
+        count = 0
+
+        while p and count < k:
+            previous = p
+            p = p.next
+            q = q.next
+            count += 1
+        
+        p = previous
+
+        while q:
+            previous = q
+            q = q.next
+        
+        q = previous
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+
 """
 Method just for testing
 """
 def test_func():
     llist = LinkedList()
-    
     
     llist.add_tail(3)
     llist.add_tail(5)
@@ -344,7 +370,8 @@ def test_func():
     llist.add_tail(5)
     llist.add_tail(2)
 
-    print(llist.count_occurence(5))
-
+    llist.print_list()
+    llist.rotate_list(3)
+    llist.print_list()
 
 test_func()

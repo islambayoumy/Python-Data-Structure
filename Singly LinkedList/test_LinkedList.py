@@ -174,3 +174,7 @@ def test_compare_two_lists_is_equal_false(llist):
 def test_count_occurence(llist):
     llist.add_tail("O")
     assert llist.count_occurence("O") == 2
+
+def test_rotate_list(llist):
+    llist.rotate_list(2)
+    assert llist.get_head().data == "M"
