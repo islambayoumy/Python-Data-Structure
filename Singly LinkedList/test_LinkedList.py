@@ -178,3 +178,10 @@ def test_count_occurence(llist):
 def test_rotate_list(llist):
     llist.rotate_list(2)
     assert llist.get_head().data == "M"
+
+def test_is_palindrome(llist):
+    assert not llist.is_palindrome()
+
+# just for coverage
+def test_print_list(llist):
+    assert not llist.print_list()

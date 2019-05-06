@@ -207,6 +207,7 @@ class LinkedList:
         while current:
             print(current.data)
             current = current.next
+        return
 
     def swap_nodes(self, node_data1, node_data2):
         """
@@ -357,21 +358,31 @@ class LinkedList:
         self.head = p.next
         p.next = None
 
+    def is_palindrome(self):
+        """
+        Check if the list is palindrome (could be read the same from both sides)
+        """
+        s = ""
+        current = self.head
+
+        while current:
+            s += current.data
+            current = current.next
+        
+        return s == s[::-1]
+
 """
 Method just for testing
 """
 def test_func():
     llist = LinkedList()
     
-    llist.add_tail(3)
-    llist.add_tail(5)
-    llist.add_tail(2)
-    llist.add_tail(1)
-    llist.add_tail(5)
-    llist.add_tail(2)
+    llist.add_tail("A")
+    llist.add_tail("B")
+    llist.add_tail("C")
+    llist.add_tail("B")
+    llist.add_tail("A")
 
-    llist.print_list()
-    llist.rotate_list(3)
-    llist.print_list()
+    print(llist.is_palindrome())
 
 test_func()
