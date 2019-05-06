@@ -170,3 +170,7 @@ def test_compare_two_lists_is_equal_false(llist):
     llist1.add_head("O")
     result = llist.compare_two_lists_is_equal(llist1.head)
     assert result == 0
+
+def test_count_occurence(llist):
+    llist.add_tail("O")
+    assert llist.count_occurence("O") == 2

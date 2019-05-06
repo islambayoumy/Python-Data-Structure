@@ -318,26 +318,33 @@ class LinkedList:
             current2 = current2.next
         return 1
 
+    def count_occurence(self, data):
+        """
+        Count number of occurence of a value
+        """
+        count = 0
+        current = self.head
+        while current:
+            if current.data == data:
+                count += 1
+            current = current.next
+        return count
+
 """
 Method just for testing
 """
 def test_func():
-    llist1 = LinkedList()
-    llist2 = LinkedList()
-
+    llist = LinkedList()
     
-    llist1.add_tail(3)
-    llist1.add_tail(5)
-    llist1.add_tail(2)
+    
+    llist.add_tail(3)
+    llist.add_tail(5)
+    llist.add_tail(2)
+    llist.add_tail(1)
+    llist.add_tail(5)
+    llist.add_tail(2)
 
-    llist2.add_tail(1)
-    llist2.add_tail(5)
-    llist2.add_tail(2)
-
-    if llist1.compare_two_lists_is_equal(llist2.head):
-        print("equal")
-    else:
-        print("not equal")
+    print(llist.count_occurence(5))
 
 
 test_func()
