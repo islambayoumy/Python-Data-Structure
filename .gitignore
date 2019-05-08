@@ -5,3 +5,6 @@ Singly LinkedList/__pycache__
 Singly LinkedList/.pytest_cache
 .DS_Store
 .vscode/settings.json
+Doubly LinkedList/__pycache__/DoublyLinkedList.cpython-36.pyc
+Doubly LinkedList/__pycache__/test_DoublyLinkedListNode.cpython-36-PYTEST.pyc
+Doubly LinkedList/.coverage
