@@ -18,6 +18,9 @@ def test_print_list(dllist):
 def test_is_linkedlist_empty(dllist):
     assert dllist.head, "list is empty"
 
+def test_list_count(dllist):
+    assert 3 == dllist.list_count(dllist.head)
+
 def test_add_to_empty_list():
     dllist = DoublyLinkedList()
     dllist.add_head(1)

@@ -28,6 +28,14 @@ class DoublyLinkedList:
 
     def __init__(self):
         self.head = None
+    
+    def list_count(self, node):
+        """
+        Return number of Nodes in the LinkedList
+        """
+        if not node:
+            return 0
+        return 1 + self.list_count(node.next)
 
     def add_head(self, data):
         """
