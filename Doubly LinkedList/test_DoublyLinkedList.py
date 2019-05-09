@@ -38,6 +38,38 @@ def test_add_after(dllist):
     dllist.add_after(7, 10)
     assert 10 == dllist.get_tail().data
 
+def test_add_after_not_tail(dllist):
+    count = dllist.list_count(dllist.head)
+    dllist.add_after(6, 10)
+    assert count+1 == dllist.list_count(dllist.head)
+
 def test_add_before(dllist):
     dllist.add_before(5, 10)
     assert 10 == dllist.get_head().data
+
+def test_add_before_not_head(dllist):
+    count = dllist.list_count(dllist.head)
+    dllist.add_before(6, 10)
+    assert count+1 == dllist.list_count(dllist.head)
+
+def test_delete_node_head_only():
+    dllist = DoublyLinkedList()
+    dllist.add_head(1)
+    dllist.delete_node(1)
+    assert 0 == dllist.list_count(dllist.head)
+
+def test_delete_node_head(dllist):
+    count = dllist.list_count(dllist.head)
+    dllist.delete_node(5)
+    assert count-1 == dllist.list_count(dllist.head)
+    
+def test_delete_node(dllist):
+    count = dllist.list_count(dllist.head)
+    dllist.delete_node(6)
+    assert count-1 == dllist.list_count(dllist.head)
+    
+def test_delete_node_tail(dllist):
+    count = dllist.list_count(dllist.head)
+    dllist.delete_node(7)
+    assert count-1 == dllist.list_count(dllist.head)
+    

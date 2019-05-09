@@ -133,6 +133,45 @@ class DoublyLinkedList:
             current = current.next
         return
 
+    def delete_node(self, key):
+        """
+        Delete a node of the LinkedList by given data
+        """
+        current = self.head
+        while current:
+            if current.data == key and current == self.head:
+                if not current.next:
+                    current = None
+                    self.head = None
+                    return
+                else:
+                    nxt = current.next
+                    
+                    current.next = None
+                    nxt.previous = None
+                    current = None
+                    self.head = nxt
+                    return
+            elif current.data == key:
+                if current.next:
+                    nxt = current.next
+                    prev = current.previous
+
+                    prev.next = nxt
+                    nxt.previous = prev
+                    current.next = None
+                    current.previous = None
+                    current = None
+                    return
+                else:
+                    prev = current.previous
+
+                    prev.next = None
+                    current.previous = None
+                    current = None
+                    return
+
+            current = current.next
 
 """
 Method just for testing
@@ -143,10 +182,10 @@ def test_func():
     dllist.add_tail(1)
     dllist.add_tail(2)
     dllist.add_tail(3)
-
-    dllist.add_before(2, 5)
-
+    dllist.add_tail(4)
 
     dllist.print_list()
+
+    dllist.delete_node(4)
 
 test_func()
