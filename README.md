@@ -24,3 +24,9 @@ $ pytest --cov-report term-missing --cov=LinkedList
 ```sh
 $ pip install pytest
 ```
+
+## Doubly LinkedList
+
+Implementation of Doubly LinkedList with most common methods using **Python 3** & their unit-tests using **Pytest** framework.
+
+Run the same steps for Singly LinkedList above.
