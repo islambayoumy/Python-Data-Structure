@@ -72,4 +72,8 @@ def test_delete_node_tail(dllist):
     count = dllist.list_count(dllist.head)
     dllist.delete_node(7)
     assert count-1 == dllist.list_count(dllist.head)
-    
+
+def test_reverse_list(dllist):
+    tail = dllist.get_tail()
+    dllist.reverse_list()
+    assert tail == dllist.get_head()

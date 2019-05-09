@@ -173,6 +173,22 @@ class DoublyLinkedList:
 
             current = current.next
 
+    def reverse_list(self):
+        """
+        Reverse the Doubly LinkedList iteratively
+        """
+        tmp = None
+        current = self.head
+        while current:
+            tmp = current.previous
+            current.previous = current.next
+            current.next = tmp
+            current = current.previous
+        
+        if tmp:
+            self.head = tmp.previous
+
+
 """
 Method just for testing
 """
@@ -185,7 +201,10 @@ def test_func():
     dllist.add_tail(4)
 
     dllist.print_list()
+    print("\n")
+    
+    dllist.reverse_list()
 
-    dllist.delete_node(4)
+    dllist.print_list()
 
 test_func()
