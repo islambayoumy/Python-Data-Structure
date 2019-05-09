@@ -30,3 +30,7 @@ def test_add_to_head(dllist):
 def test_add_to_tail(dllist):
     dllist.add_tail(100)
     assert 100 == dllist.get_tail().data, "not a tail"
+
+def test_add_after(dllist):
+    dllist.add_after(7, 10)
+    assert 10 == dllist.get_tail().data

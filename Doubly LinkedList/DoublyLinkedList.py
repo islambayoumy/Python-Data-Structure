@@ -23,7 +23,7 @@ class DoublyLinkedListNode:
         """
         return self.previous
 
-
+ 
 class DoublyLinkedList:
 
     def __init__(self):
@@ -75,6 +75,25 @@ class DoublyLinkedList:
         """
         return self.head
 
+    def add_after(self, key, data):
+        """
+        Adding new node after given node
+        """
+        current = self.head
+        while current:
+            if not current.next and current.data == key:
+                self.add_tail(data)
+                return
+            elif current.data == key:
+                node = DoublyLinkedListNode(data)
+                nxt = current.next
+                current.next = node
+                node.next = nxt
+                node.previous = current
+                nxt.previous = node
+
+            current = current.next
+
     def print_list(self):
         """
         Print the whole LinkedList
@@ -96,9 +115,8 @@ def test_func():
     dllist.add_tail(2)
     dllist.add_tail(3)
 
-    dllist.add_head(7)
-    dllist.add_head(6)
-    dllist.add_head(5)
+    dllist.add_after(2, 5)
+
 
     dllist.print_list()
 
