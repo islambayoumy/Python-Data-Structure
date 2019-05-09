@@ -37,3 +37,7 @@ def test_add_to_tail(dllist):
 def test_add_after(dllist):
     dllist.add_after(7, 10)
     assert 10 == dllist.get_tail().data
+
+def test_add_before(dllist):
+    dllist.add_before(5, 10)
+    assert 10 == dllist.get_head().data

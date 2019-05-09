@@ -95,11 +95,32 @@ class DoublyLinkedList:
             elif current.data == key:
                 node = DoublyLinkedListNode(data)
                 nxt = current.next
+
                 current.next = node
                 node.next = nxt
                 node.previous = current
                 nxt.previous = node
 
+            current = current.next
+
+    def add_before(self, key, data):
+        """
+        Adding new node before given node
+        """
+        current = self.head
+        while current:
+            if not current.previous and current.data == key:
+                self.add_head(data)
+                return
+            elif current.data == key:
+                node = DoublyLinkedListNode(data)
+                prev = current.previous
+
+                prev.next = node
+                current.previous = node
+                node.next = current
+                node.previous = prev
+                
             current = current.next
 
     def print_list(self):
@@ -123,7 +144,7 @@ def test_func():
     dllist.add_tail(2)
     dllist.add_tail(3)
 
-    dllist.add_after(2, 5)
+    dllist.add_before(2, 5)
 
 
     dllist.print_list()
