@@ -188,6 +188,24 @@ class DoublyLinkedList:
         if tmp:
             self.head = tmp.previous
 
+    def remove_duplicates(self):
+        """
+        Removing duplicate data
+        """
+        current = self.head
+        previous= None
+        dupl_values = list()
+
+        while current:
+            if current.data in dupl_values:
+                previous.next = current.next
+                current.next = previous
+                current = None
+            else:
+                dupl_values.append(current.data)
+                previous = current
+            current = previous.next
+
 
 """
 Method just for testing
@@ -199,11 +217,14 @@ def test_func():
     dllist.add_tail(2)
     dllist.add_tail(3)
     dllist.add_tail(4)
+    dllist.add_tail(4)
+    dllist.add_tail(5)
+    dllist.add_tail(2)
 
     dllist.print_list()
     print("\n")
     
-    dllist.reverse_list()
+    dllist.remove_duplicates()
 
     dllist.print_list()
 

@@ -77,3 +77,9 @@ def test_reverse_list(dllist):
     tail = dllist.get_tail()
     dllist.reverse_list()
     assert tail == dllist.get_head()
+
+def test_remove_duplicates(dllist):
+    dllist.add_tail(6)
+    count = dllist.list_count(dllist.head)
+    dllist.remove_duplicates()
+    assert dllist.list_count(dllist.head) == count - 1
