@@ -21,6 +21,25 @@ class CircularLinkedList:
     def __init__(self):
         self.head = None
 
+    def add_head(self, data):
+        """
+        Insert new Node at the beginning of the LinkedList
+        """
+        node = CircularLinkedListNode(data)
+        
+        current = self.head
+        node.next = self.head
+
+        if not self.head:
+            node.next = node
+        else:
+            while current.next != self.head:
+                current = current.next
+            current.next = node
+
+        self.head = node
+        return
+
     def add_tail(self, data):
         """
         Insert new Node at the ending of the LinkedList
@@ -57,9 +76,9 @@ Method just for testing
 def test_func():
     cllist = CircularLinkedList()
 
-    cllist.add_tail(1)
-    cllist.add_tail(2)
-    cllist.add_tail(3)
+    cllist.add_head(1)
+    cllist.add_head(2)
+    cllist.add_head(3)
 
     cllist.print_list()
 
