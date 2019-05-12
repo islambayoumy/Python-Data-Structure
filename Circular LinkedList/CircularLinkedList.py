@@ -70,6 +70,27 @@ class CircularLinkedList:
                 break
         return
 
+    def has_cycle(self):
+        """
+        Determine whether the list has cycle or not.
+        Cycle may occure between elements that don't include head
+        """
+        if not self.head:
+            return False
+    
+        fast = self.head
+        slow = self.head
+
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+            
+        return False
+
+
 """
 Method just for testing
 """
@@ -80,6 +101,6 @@ def test_func():
     cllist.add_head(2)
     cllist.add_head(3)
 
-    cllist.print_list()
+    print(cllist.has_cycle())
 
 test_func()
