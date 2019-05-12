@@ -39,16 +39,28 @@ class CircularLinkedList:
             node.next = self.head
             return
 
-
+    def print_list(self):
+        """
+        Print the whole LinkedList
+        """
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
+            if current == self.head:
+                break
+        return
 
 """
 Method just for testing
 """
 def test_func():
-    cllist_node = CircularLinkedListNode()
-    
-    cllist_node.data = 1
+    cllist = CircularLinkedList()
 
-    print(cllist_node.get_data())
+    cllist.add_tail(1)
+    cllist.add_tail(2)
+    cllist.add_tail(3)
+
+    cllist.print_list()
 
 test_func()
