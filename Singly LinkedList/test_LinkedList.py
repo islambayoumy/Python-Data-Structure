@@ -221,11 +221,6 @@ def test_is_palindrome(llist):
     assert not llist.is_palindrome()
 
 
-# just for coverage
-def test_print_list(llist):
-    assert not llist.print_list()
-
-
 def test_move_tail_to_head(llist):
     tail = llist.get_tail()
     llist.move_tail_to_head()

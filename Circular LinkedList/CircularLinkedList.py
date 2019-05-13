@@ -6,13 +6,13 @@ class CircularLinkedListNode:
         self.data = data
         self.next = None
 
-    def get_data(self): # pragma: no cover
+    def get_data(self):  # pragma: no cover
         """
         Return data/value inside Node
         """
         return self.data
 
-    def get_next(self): # pragma: no cover
+    def get_next(self):  # pragma: no cover
         """
         Return the pointer to the Next Node
         """
@@ -36,6 +36,21 @@ class CircularLinkedList:
                 count += 1
                 current = current.next
             return count
+
+    def get_head(self):
+        """
+        Return head of LinkedList
+        """
+        return self.head
+
+    def get_tail(self):
+        """
+        Return tail of LinkedList
+        """
+        current = self.head
+        while current.next != self.head:
+            current = current.next
+        return current
 
     def add_head(self, data):
         """
@@ -97,7 +112,7 @@ class CircularLinkedList:
 
         return self.head
 
-    def print_list(self): # pragma: no cover
+    def print_list(self):  # pragma: no cover
         """
         Print the whole LinkedList
         """
@@ -135,15 +150,16 @@ Method just for testing
 """
 
 
-def test_func():
+def test_func():  # pragma: no cover
     cllist = CircularLinkedList()
 
     cllist.add_head(1)
     cllist.add_head(2)
     cllist.add_head(3)
 
-    cllist.delete_node(2)
-
     cllist.print_list()
+
+    print(cllist.get_tail().data)
+
 
 test_func()
