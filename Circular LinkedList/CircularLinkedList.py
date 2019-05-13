@@ -1,5 +1,6 @@
 # Circular Linked List
 
+
 class CircularLinkedListNode:
     def __init__(self, data):
         self.data = data
@@ -16,6 +17,7 @@ class CircularLinkedListNode:
         Return the pointer to the Next Node
         """
         return self.next
+
 
 class CircularLinkedList:
     def __init__(self):
@@ -40,7 +42,7 @@ class CircularLinkedList:
         Insert new Node at the beginning of the LinkedList
         """
         node = CircularLinkedListNode(data)
-        
+
         current = self.head
         node.next = self.head
 
@@ -57,7 +59,7 @@ class CircularLinkedList:
     def add_tail(self, data):
         """
         Insert new Node at the ending of the LinkedList
-        """    
+        """
         node = CircularLinkedListNode(data)
 
         if not self.head:
@@ -71,7 +73,7 @@ class CircularLinkedList:
             current.next = node
             node.next = self.head
             return
-        
+
     def delete_node(self, key):
         """
         Delete a specified node from the LinkedList by key
@@ -92,7 +94,7 @@ class CircularLinkedList:
                     prev.next = current.next
                     current = None
                     break
-        
+
         return self.head
 
     def print_list(self):
@@ -114,23 +116,25 @@ class CircularLinkedList:
         """
         if not self.head:
             return False
-    
+
         fast = self.head
         slow = self.head
 
-        while fast != None and fast.next != None:
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
 
             if slow == fast:
                 return True
-            
+
         return False
 
 
 """
 Method just for testing
 """
+
+
 def test_func():
     cllist = CircularLinkedList()
 

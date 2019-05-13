@@ -1,5 +1,5 @@
 class DoublyLinkedListNode:
-        
+
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -23,12 +23,12 @@ class DoublyLinkedListNode:
         """
         return self.previous
 
- 
+
 class DoublyLinkedList:
 
     def __init__(self):
         self.head = None
-    
+
     def list_count(self, node):
         """
         Return number of Nodes in the LinkedList
@@ -120,7 +120,7 @@ class DoublyLinkedList:
                 current.previous = node
                 node.next = current
                 node.previous = prev
-                
+
             current = current.next
 
     def print_list(self):
@@ -146,7 +146,7 @@ class DoublyLinkedList:
                     return
                 else:
                     nxt = current.next
-                    
+
                     current.next = None
                     nxt.previous = None
                     current = None
@@ -184,7 +184,7 @@ class DoublyLinkedList:
             current.previous = current.next
             current.next = tmp
             current = current.previous
-        
+
         if tmp:
             self.head = tmp.previous
 
@@ -193,7 +193,7 @@ class DoublyLinkedList:
         Removing duplicate data
         """
         current = self.head
-        previous= None
+        previous = None
         dupl_values = list()
 
         while current:
@@ -210,6 +210,8 @@ class DoublyLinkedList:
 """
 Method just for testing
 """
+
+
 def test_func():
     dllist = DoublyLinkedList()
 
@@ -223,7 +225,7 @@ def test_func():
 
     dllist.print_list()
     print("\n")
-    
+
     dllist.remove_duplicates()
 
     dllist.print_list()

@@ -1,7 +1,8 @@
 # Singly Linked List
 
+
 class LinkedListNode:
-        
+
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -31,37 +32,37 @@ class LinkedList:
         """
         if not node:
             return 0
-        return 1 + self.list_count(node.next) 
+        return 1 + self.list_count(node.next)
 
     def add_head(self, data):
         """
         Insert new Node at the beginning of the LinkedList
         """
         node = LinkedListNode(data)
-        
+
         node.next = self.head
         self.head = node
 
-        self.count+=1
+        self.count += 1
         return
-        
+
     def add_node(self, data, position):
         """
         Insert new Node at a specific position of the LinkedList
-        """        
-        pre_node = self.get_node_by_position(position-1)            
+        """
+        pre_node = self.get_node_by_position(position-1)
         node = LinkedListNode(data)
         node.next = pre_node.next
         pre_node.next = node
-        self.count+=1
+        self.count += 1
         return
-        
+
     def add_tail(self, data):
         """
         Insert new Node at the ending of the LinkedList
-        """    
+        """
         node = LinkedListNode(data)
-        self.count+=1
+        self.count += 1
 
         if self.head is None:
             self.head = node
@@ -78,7 +79,7 @@ class LinkedList:
         Return head of LinkedList
         """
         return self.head
-    
+
     def get_tail(self):
         """
         Return tail of LinkedList
@@ -120,12 +121,12 @@ class LinkedList:
         current = self.head
         position = 0
         while current:
-            position+=1
+            position += 1
             if current.data == data:
                 return position
             current = current.next
         return
-    
+
     def delete_head(self):
         """
         Delete the head of the LinkedList and return the new head
@@ -134,7 +135,7 @@ class LinkedList:
         if node:
             self.head = node.next
             node = None
-            self.count-=1
+            self.count -= 1
         return self.head
 
     def delete_by_position(self, position):
@@ -143,15 +144,15 @@ class LinkedList:
         """
         pre_node = self.get_node_by_position(position-1)
         node = pre_node.next
-        
+
         if self.get_head() in [pre_node, node]:
             return self.delete_head()
         elif node:
             pre_node.next = node.next
             node = None
-            self.count-=1
+            self.count -= 1
         return
-    
+
     def delete_by_data(self, data):
         """
         Delete a node of the LinkedList by data
@@ -165,7 +166,7 @@ class LinkedList:
         elif node:
             pre_node.next = node.next
             node = None
-            self.count-=1
+            self.count -= 1
         return
 
     def reverse_list_iterative(self):
@@ -189,7 +190,7 @@ class LinkedList:
         def reverse_recursive(pre_node, curr_node):
             if not curr_node:
                 return pre_node
-            
+
             nxt = curr_node.next
             curr_node.next = pre_node
             pre_node = curr_node
@@ -215,7 +216,7 @@ class LinkedList:
         """
         if node_data1 == node_data2:
             return
-        
+
         pre_node1 = None
         curr_node1 = self.head
         while curr_node1 and curr_node1.data != node_data1:
@@ -252,7 +253,7 @@ class LinkedList:
             return head_list2
         if not head_list2:
             return head_list1
-        
+
         if head_list1 and head_list2:
             if head_list1.data <= head_list2.data:
                 newlist = head_list1
@@ -276,7 +277,7 @@ class LinkedList:
             newlist.next = head_list2
         if not head_list2:
             newlist.next = head_list1
-        
+
         return newhead
 
     def remove_duplicates(self):
@@ -284,7 +285,7 @@ class LinkedList:
         Removing duplicate data
         """
         current = self.head
-        previous= None
+        previous = None
         dupl_values = list()
 
         while current:
@@ -302,7 +303,7 @@ class LinkedList:
         """
         current1 = self.head
         current2 = head2
-        
+
         if not current1 and not current2:
             return 1
 
@@ -311,7 +312,7 @@ class LinkedList:
 
         if count1 != count2:
             return 0
-        
+
         while current1 and current2:
             if current1.data != current2.data:
                 return 0
@@ -346,13 +347,13 @@ class LinkedList:
             p = p.next
             q = q.next
             count += 1
-        
+
         p = previous
 
         while q:
             previous = q
             q = q.next
-        
+
         q = previous
         q.next = self.head
         self.head = p.next
@@ -360,7 +361,8 @@ class LinkedList:
 
     def is_palindrome(self):
         """
-        Check if the list is palindrome (could be read the same from both sides)
+        Check if the list is palindrome
+        (could be read the same from both sides)
         """
         s = ""
         current = self.head
@@ -368,7 +370,7 @@ class LinkedList:
         while current:
             s += current.data
             current = current.next
-        
+
         return s == s[::-1]
 
     def move_tail_to_head(self):
@@ -381,7 +383,7 @@ class LinkedList:
         while current.next:
             pre_tail = current
             current = current.next
-            
+
         current.next = self.head
         self.head = current
         pre_tail.next = None
@@ -390,9 +392,11 @@ class LinkedList:
 """
 Method just for testing
 """
+
+
 def test_func():
     llist = LinkedList()
-    
+
     llist.add_tail("A")
     llist.add_tail("B")
     llist.add_tail("C")
