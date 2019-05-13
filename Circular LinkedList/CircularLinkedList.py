@@ -21,6 +21,20 @@ class CircularLinkedList:
     def __init__(self):
         self.head = None
 
+    def list_count(self):
+        """
+        Return number of Nodes in the LinkedList
+        """
+        current = self.head
+        if not current:
+            return 0
+        else:
+            count = 1
+            while current.next != self.head:
+                count += 1
+                current = current.next
+            return count
+
     def add_head(self, data):
         """
         Insert new Node at the beginning of the LinkedList
@@ -101,6 +115,6 @@ def test_func():
     cllist.add_head(2)
     cllist.add_head(3)
 
-    print(cllist.has_cycle())
+    print(cllist.list_count())
 
 test_func()
