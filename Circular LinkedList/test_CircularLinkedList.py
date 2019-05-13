@@ -68,3 +68,15 @@ def test_has_cycle_head_only():
     cllist.add_head(1)
     cllist.head.next = None
     assert not cllist.has_cycle()
+
+
+def test_split_list_from_head(cllist):
+    h1, h2 = cllist.split_list(1)
+    assert 1 == h1.data
+    assert 2 == h2.data
+
+
+def test_split_list(cllist):
+    h1, h2 = cllist.split_list(3)
+    assert 1 == h1.data
+    assert 3 == h2.data

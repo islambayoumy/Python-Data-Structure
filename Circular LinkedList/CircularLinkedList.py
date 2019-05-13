@@ -144,6 +144,31 @@ class CircularLinkedList:
 
         return False
 
+    def split_list(self, key):
+        """
+        splitting the list from a specified node into two lists
+        and return head for each list
+        """
+        current = self.head
+        prev = None
+
+        if key == self.head.data:
+            current = current.next
+            self.head.next = self.head
+        else:
+            while current.data != key:
+                prev = current
+                current = current.next
+            prev.next = self.head
+
+        splited_list = CircularLinkedList()
+        while current.next != self.head:
+            splited_list.add_tail(current.data)
+            current = current.next
+        splited_list.add_tail(current.data)
+
+        return self.head, splited_list.head
+
 
 """
 Method just for testing
@@ -153,13 +178,17 @@ Method just for testing
 def test_func():  # pragma: no cover
     cllist = CircularLinkedList()
 
-    cllist.add_head(1)
-    cllist.add_head(2)
     cllist.add_head(3)
+    cllist.add_head(2)
+    cllist.add_head(1)
+    cllist.add_tail(4)
+    cllist.add_tail(5)
+    cllist.add_tail(6)
 
-    cllist.print_list()
+    head1, head2 = cllist.split_list(4)
 
-    print(cllist.get_tail().data)
+    print(head1.data)
+    print(head2.data)
 
 
 test_func()
