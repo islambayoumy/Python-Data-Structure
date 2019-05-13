@@ -97,7 +97,7 @@ class CircularLinkedList:
 
         return self.head
 
-    def print_list(self):
+    def print_list(self): # pragma: no cover
         """
         Print the whole LinkedList
         """
