@@ -71,6 +71,29 @@ class CircularLinkedList:
             current.next = node
             node.next = self.head
             return
+        
+    def delete_node(self, key):
+        """
+        Delete a specified node from the LinkedList by key
+        """
+        current = self.head
+        if self.head.data == key:
+            while current.next != self.head:
+                current = current.next
+            current.next = self.head.next
+            self.head = self.head.next
+            current = None
+        else:
+            prev = None
+            while current.next != self.head:
+                prev = current
+                current = current.next
+                if current.data == key:
+                    prev.next = current.next
+                    current = None
+                    break
+        
+        return self.head
 
     def print_list(self):
         """
@@ -115,6 +138,8 @@ def test_func():
     cllist.add_head(2)
     cllist.add_head(3)
 
-    print(cllist.list_count())
+    cllist.delete_node(2)
+
+    cllist.print_list()
 
 test_func()
