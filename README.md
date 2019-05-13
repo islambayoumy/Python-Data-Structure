@@ -29,4 +29,13 @@ $ pip install pytest
 
 Implementation of Doubly LinkedList with most common methods using **Python 3** & their unit-tests using **Pytest** framework.
 
-Run the same steps for Singly LinkedList above.
+Run the same steps for Singly LinkedList above (change --cov=LinkedList to --cov=DoublyLinkedList).
+
+
+## Circular LinkedList
+
+Implementation of Circular LinkedList with most common methods using **Python 3** & their unit-tests using **Pytest** framework.
+
+Run the same steps for Singly LinkedList above (change --cov=LinkedList to --cov=CircularLinkedList).
+
+You can just extend the Singly LinkedList class and overwrite it's methods as it's just a special case of the Singly LinkedList
