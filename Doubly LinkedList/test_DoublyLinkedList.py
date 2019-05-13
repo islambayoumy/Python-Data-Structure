@@ -13,11 +13,6 @@ def dllist(request):
     return dllist
 
 
-# just for coverage
-def test_print_list(dllist):
-    assert not dllist.print_list()
-
-
 def test_is_linkedlist_empty(dllist):
     assert dllist.head, "list is empty"
 

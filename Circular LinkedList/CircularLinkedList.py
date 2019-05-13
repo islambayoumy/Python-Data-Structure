@@ -6,13 +6,13 @@ class CircularLinkedListNode:
         self.data = data
         self.next = None
 
-    def get_data(self):
+    def get_data(self): # pragma: no cover
         """
         Return data/value inside Node
         """
         return self.data
 
-    def get_next(self):
+    def get_next(self): # pragma: no cover
         """
         Return the pointer to the Next Node
         """

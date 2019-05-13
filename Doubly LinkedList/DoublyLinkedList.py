@@ -5,19 +5,19 @@ class DoublyLinkedListNode:
         self.next = None
         self.previous = None
 
-    def get_data(self):
+    def get_data(self): # pragma: no cover
         """
         Return data/value inside Node
         """
         return self.data
 
-    def get_next(self):
+    def get_next(self): # pragma: no cover
         """
         Return the pointer to the Next Node
         """
         return self.next
 
-    def get_previous(self):
+    def get_previous(self): # pragma: no cover
         """
         Return the pointer to the Previous Node
         """
@@ -123,7 +123,7 @@ class DoublyLinkedList:
 
             current = current.next
 
-    def print_list(self):
+    def print_list(self): # pragma: no cover
         """
         Print the whole LinkedList
         """

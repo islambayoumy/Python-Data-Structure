@@ -7,13 +7,13 @@ class LinkedListNode:
         self.data = data
         self.next = None
 
-    def get_data(self):
+    def get_data(self): # pragma: no cover
         """
         Return data/value inside Node
         """
         return self.data
 
-    def get_next(self):
+    def get_next(self): # pragma: no cover
         """
         Return the pointer to the Next Node
         """
@@ -200,7 +200,7 @@ class LinkedList:
         self.head = reverse_recursive(None, self.head)
         return
 
-    def print_list(self):
+    def print_list(self): # pragma: no cover
         """
         Print the whole LinkedList
         """
@@ -394,7 +394,7 @@ Method just for testing
 """
 
 
-def test_func():
+def test_func(): # pragma: no cover
     llist = LinkedList()
 
     llist.add_tail("A")
