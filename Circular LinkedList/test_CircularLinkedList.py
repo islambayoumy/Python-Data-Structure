@@ -80,3 +80,9 @@ def test_split_list(cllist):
     h1, h2 = cllist.split_list(3)
     assert 1 == h1.data
     assert 3 == h2.data
+
+
+def test_josephus_problem(cllist):
+    cllist.add_tail(4)
+    cllist.add_tail(5)
+    assert 3 == cllist.josephus_problem(2).data

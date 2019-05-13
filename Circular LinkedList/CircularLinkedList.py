@@ -169,6 +169,23 @@ class CircularLinkedList:
 
         return self.head, splited_list.head
 
+    def josephus_problem(self, step):
+        """
+        It's a counting-out game.
+        check this: https://youtu.be/fZ3p2Iw-O2I
+        """
+        current = self.head
+
+        while self.list_count() > 1:
+            count = 1
+            while count != step:
+                current = current.next
+                count += 1
+            self.delete_node(current.data)
+            current = current.next
+
+        return self.head
+
 
 """
 Method just for testing
@@ -185,10 +202,7 @@ def test_func():  # pragma: no cover
     cllist.add_tail(5)
     cllist.add_tail(6)
 
-    head1, head2 = cllist.split_list(4)
-
-    print(head1.data)
-    print(head2.data)
+    print(cllist.josephus_problem(2).data)
 
 
 test_func()
