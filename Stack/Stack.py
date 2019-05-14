@@ -22,9 +22,7 @@ class Stack:
         """
         Checking if the stack is empty?
         """
-        if len(self.items):
-            return False
-        return True
+        return len(self.items) == 0
 
     def get_length(self):
         """
@@ -37,3 +35,27 @@ class Stack:
         return the stack
         """
         return self.items
+
+
+"""
+Method just for testing
+"""
+
+
+def test_func():  # pragma: no cover
+    stack = Stack()
+
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+
+    print(stack.get_stack())
+
+    print(stack.pop())
+
+    print(stack.get_length())
+
+    print(stack.is_empty())
+
+
+test_func()
