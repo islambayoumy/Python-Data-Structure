@@ -6,11 +6,13 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.oldMax = None
 
 
 class Stack:
     def __init__(self):
         self.peek = None
+        self.maximum = None
 
     def push(self, item):
         """
@@ -19,6 +21,11 @@ class Stack:
         node = Node(item)
         node.next = self.peek
         self.peek = node
+
+        if not self.maximum or item > self.maximum:
+            node.oldMax = self.maximum
+            self.maximum = item
+
         return
 
     def pop(self):
@@ -28,6 +35,10 @@ class Stack:
         if not self.is_empty():
             temp = self.peek
             self.peek = self.peek.next
+
+            if temp.oldMax:
+                self.maximum = temp.oldMax
+
             return temp.data
 
     def is_empty(self):
@@ -61,6 +72,14 @@ class Stack:
             current = current.next
         return stack
 
+    def get_max(self):
+        """
+        Return max value in the stack
+        """
+        if self.is_empty():
+            return None
+        return self.maximum
+
 
 """
 Method just for testing
@@ -76,7 +95,11 @@ def test_func():  # pragma: no cover
     stack.push(4)
     stack.push(5)
 
-    print(stack.get_stack())
+    print(stack.get_max())
+    stack.pop()
+    print(stack.get_max())
+    stack.pop()
+    print(stack.get_max())
 
 
 test_func()
