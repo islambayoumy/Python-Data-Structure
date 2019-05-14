@@ -9,6 +9,9 @@ class Stack:
         """
         Pushing new item to the top of the stack
         """
+        if item > self.max:
+            self.max = item
+
         self.items.append(item)
         return
 
@@ -16,7 +19,8 @@ class Stack:
         """
         Pop the top item of the stack
         """
-        return self.items.pop()
+        if not self.is_empty():
+            return self.items.pop()
 
     def is_empty(self):
         """
@@ -36,6 +40,13 @@ class Stack:
         """
         return self.items
 
+    def get_peek(self):
+        """
+        return the peek item on the top of the stack
+        """
+        if not self.is_empty():
+            return self.items[-1]
+
 
 """
 Method just for testing
@@ -45,17 +56,9 @@ Method just for testing
 def test_func():  # pragma: no cover
     stack = Stack()
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
+    stack.pop()
 
     print(stack.get_stack())
-
-    print(stack.pop())
-
-    print(stack.get_length())
-
-    print(stack.is_empty())
 
 
 test_func()
