@@ -44,6 +44,9 @@ class Stack:
         if not self.is_empty():
             return self.items[-1]
 
+    def get_max(self):
+        return max(self.items)
+
 
 """
 Method just for testing
@@ -58,4 +61,4 @@ def test_func():  # pragma: no cover
     print(stack.get_stack())
 
 
-# test_func()
+test_func()
