@@ -9,9 +9,6 @@ class Stack:
         """
         Pushing new item to the top of the stack
         """
-        if item > self.max:
-            self.max = item
-
         self.items.append(item)
         return
 
@@ -61,4 +58,4 @@ def test_func():  # pragma: no cover
     print(stack.get_stack())
 
 
-test_func()
+# test_func()
