@@ -25,3 +25,9 @@ class Stack:
         if len(self.items):
             return False
         return True
+
+    def get_length(self):
+        """
+        Return length of the stack
+        """
+        return len(self.items)
