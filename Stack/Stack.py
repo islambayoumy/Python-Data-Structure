@@ -5,7 +5,6 @@ class Stack:
     def __init__(self):
         self.items = list()
 
-
     def push(self, item):
         """
         Pushing new item to the top of the stack
@@ -13,9 +12,16 @@ class Stack:
         self.items.append(item)
         return
 
-
     def pop(self):
         """
-        pop the top item of the stack
+        Pop the top item of the stack
         """
         return self.items.pop()
+
+    def is_empty(self):
+        """
+        Checking if the stack is empty?
+        """
+        if len(self.items):
+            return False
+        return True
