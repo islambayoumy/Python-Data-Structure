@@ -31,3 +31,9 @@ class Stack:
         Return length of the stack
         """
         return len(self.items)
+
+    def get_stack(self):
+        """
+        return the stack
+        """
+        return self.items
