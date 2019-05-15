@@ -38,6 +38,8 @@ class Stack:
 
             if temp.oldMax:
                 self.maximum = temp.oldMax
+            elif self.is_empty():
+                self.maximum = None
 
             return temp.data
 
