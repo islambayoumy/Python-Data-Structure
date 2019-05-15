@@ -39,3 +39,11 @@ Implementation of Circular LinkedList with most common methods using **Python 3*
 Run the same steps for Singly LinkedList above (change --cov=LinkedList to --cov=CircularLinkedList).
 
 You can just extend the Singly LinkedList class and overwrite it's methods as it's just a special case of the Singly LinkedList
+
+## Stack
+
+Two different implementations of the stack with basic operations:
+- Using lists [getting maximum would have complexity O(n)]
+- Using linked lists [reteriving maximum with complexity O(1)] to track previous max value
+
+Implementation of 'Balanced Parentheses' method
