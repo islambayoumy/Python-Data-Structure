@@ -31,7 +31,7 @@ class Stack:
         """
         return len(self.items)
 
-    def get_stack(self):
+    def get_stack(self): # pragma: no cover
         """
         return the stack
         """
