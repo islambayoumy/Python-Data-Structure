@@ -53,7 +53,8 @@ class Stack:
         """
         Return peek of stack
         """
-        return self.peek.data
+        if self.peek:
+            return self.peek.data
 
     def stack_len(self, item):
         """
@@ -63,7 +64,7 @@ class Stack:
             return 0
         return 1 + self.stack_len(item.next)
 
-    def get_stack(self):
+    def get_stack(self):  # pragma: no cover
         """
         Return stack as list
         """
