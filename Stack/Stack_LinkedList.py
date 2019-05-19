@@ -105,4 +105,4 @@ def test_func():  # pragma: no cover
     print(stack.get_max())
 
 
-test_func()
+# test_func()
